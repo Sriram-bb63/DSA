@@ -50,6 +50,17 @@ class linked_list:
             i += 1
         return node_iterator.value
 
+    def length(self):
+        i = 0
+        node_iterator = self.head
+        while node_iterator != None:
+            node_iterator = node_iterator.nextnode
+            i += 1
+        return i
+    
+    def clear(self):
+        self.head = None
+
 demo_linked_list = linked_list()
 for i in range(10):
     demo_linked_list.insert_node(i)
