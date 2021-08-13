@@ -16,7 +16,7 @@ class linked_list:
             print(node_iterator.value)
             node_iterator = node_iterator.nextnode
 
-    def insert(self, value):
+    def insert_node(self, value):
         new_node = node(value)
         if self.head == None:
             self.head = new_node
@@ -34,7 +34,23 @@ class linked_list:
             i += 1
         node_iterator.nextnode = node_iterator.nextnode.nextnode
 
+    def find_node_index(self, val):
+        i = 0
+        node_iterator = self.head
+        while node_iterator.nextnode != None and node_iterator.value != val:
+            node_iterator = node_iterator.nextnode
+            i += 1
+        return i
+
+    def find_node_value(self, index):
+        i = 0
+        node_iterator = self.head
+        while node_iterator != None and i != index:
+            node_iterator = node_iterator.nextnode
+            i += 1
+        return node_iterator.value
+
 demo_linked_list = linked_list()
 for i in range(10):
-    demo_linked_list.insert(i)
+    demo_linked_list.insert_node(i)
 demo_linked_list.print_linked_list()
