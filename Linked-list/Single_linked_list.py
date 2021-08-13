@@ -5,10 +5,10 @@ class node:
         self.nextnode = None
 
 
-class linked_list:
+class sinlge_linked_list:
 
-    def __init__(self, head = None):
-        self.head = head
+    def __init__(self):
+        self.head = None
 
     def print_linked_list(self):
         node_iterator = self.head
@@ -32,7 +32,9 @@ class linked_list:
         while node_iterator.nextnode != None and i != index - 1:
             node_iterator = node_iterator.nextnode
             i += 1
-        node_iterator.nextnode = node_iterator.nextnode.nextnode
+        left = node_iterator
+        right = node_iterator.nextnode.nextnode
+        left.nextnode = right
 
     def find_node_index(self, val):
         i = 0
@@ -61,7 +63,7 @@ class linked_list:
     def clear(self):
         self.head = None
 
-demo_linked_list = linked_list()
+demo_linked_list = sinlge_linked_list()
 for i in range(10):
     demo_linked_list.insert_node(i)
 demo_linked_list.print_linked_list()
