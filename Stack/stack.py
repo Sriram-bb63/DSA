@@ -11,8 +11,8 @@ class stack:
 		self.top = self.lst[-1]
 
 	def pop(self):
-		self.lst.pop()
-		self.top = self.lst[-1]
+		self.top = self.lst[-2]
+		return self.lst.pop()
 
 	def is_empty(self):
 		if len(self.lst) >= 1:
