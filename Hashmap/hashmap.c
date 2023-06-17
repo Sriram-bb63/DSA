@@ -1,13 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define SIZE 10
+#define SIZE 56
 
 
 // STRUCTURES
 typedef struct Node
 {
-    int key;
+    // int key;
+    char key;
     int value;
     struct Node* nextnode;
 } Node;
@@ -19,7 +20,7 @@ typedef struct Hashmap
 
 
 // FUNCTIONS
-int hash(int key)
+int hash(char key)
 {
     return key % SIZE;
 }
@@ -33,7 +34,7 @@ Hashmap* initHashmap()
     return map;
 }
 
-Node* createNode(int key, int value)
+Node* createNode(char key, int value)
 {
     Node* newnode = (Node*)malloc(sizeof(Node));
     newnode->key = key;
@@ -42,7 +43,7 @@ Node* createNode(int key, int value)
     return newnode;
 }
 
-void addNode(int key, int value, Hashmap* map)
+void addNode(char key, int value, Hashmap* map)
 {
     int index = hash(key);
     Node* newnode = createNode(key, value);
@@ -58,13 +59,13 @@ void addNode(int key, int value, Hashmap* map)
     }
 }
 
-void getNodes(int key, Hashmap* map)
+void getNodes(char key, Hashmap* map)
 {
     int index = hash(key);
     Node* curr = map->arr[index];
     printf("%d [", index);
     while (curr != NULL) {
-        printf("-> (%d %d)", curr->key, curr->value);
+        printf("-> (%c %d)", curr->key, curr->value);
         curr = curr->nextnode;
     }
     printf("-> NULL ]\n");
@@ -72,11 +73,12 @@ void getNodes(int key, Hashmap* map)
 
 void printHashMap(Hashmap* map)
 {
+    printf("Index Nodes\n");
     for (int i=0; i<SIZE; i++) {
-        printf("%d [", i);
+        printf("%d [ ", i);
         Node* curr = map->arr[i];
         while (curr != NULL) {
-            printf(" -> (%d %d)", curr->key, curr->value);
+            printf("-> (%c %d) ", curr->key, curr->value);
             curr = curr->nextnode;
         }
         printf(" -> NULL  ]\n");
@@ -88,15 +90,16 @@ void printHashMap(Hashmap* map)
 int main()
 {
     Hashmap* map = initHashmap();
-    addNode(0, 100, map);
-    addNode(0, 101, map);
-    addNode(2, 200, map);
-    addNode(3, 300, map);
-    addNode(7, 700, map);
-    addNode(7, 701, map);
-    addNode(7, 102, map);
+    addNode('a', 100, map);
+    addNode('b', 101, map);
+    addNode('b', 200, map);
+    addNode('z', 300, map);
+    addNode('z', 700, map);
+    addNode('a', 701, map);
+    addNode('z', 102, map);
     printHashMap(map);
-    getNodes(7, map);
+    printf("\n");
+    getNodes('z', map);
     return 0;
 }
 
