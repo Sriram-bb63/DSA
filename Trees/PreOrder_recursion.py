@@ -17,7 +17,7 @@ root.right.right = Node(7)
 
 def traverse(node) -> None:
     if node:
-	print(node.val)
+        print(node.val)
         traverse(node.left)
         traverse(node.right)
 

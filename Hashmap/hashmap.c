@@ -102,4 +102,3 @@ int main()
     getNodes('z', map);
     return 0;
 }
-

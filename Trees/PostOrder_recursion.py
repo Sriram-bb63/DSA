@@ -19,6 +19,6 @@ def traverse(node) -> None:
     if node:
         traverse(node.left)
         traverse(node.right)
-	print(node.val)
+        print(node.val)
 
 traverse(root)
